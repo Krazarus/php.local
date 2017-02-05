@@ -33,6 +33,7 @@
                 <div class="form-group">
                     <textarea class="form-control" rows="3"></textarea>
                 </div>
+                <input type="hidden">
                 <button type="submit" class="btn btn-info ">Reply</button>
                 <button type="submit" class="btn btn-default">Cancel</button>
                 <br>
