@@ -1,4 +1,7 @@
 <?php
+
+use App\Models\User;
+
 if (!session_id()) {
     session_start();
 }
@@ -57,3 +60,21 @@ try{
 echo 'Id ' . $userNode->getId() .'<br>';
 echo 'First name ' . $userNode->getFirstName() . '<br>';
 echo 'Last name ' . $userNode->getLastName() . '<br>';
+
+$firstName = $userNode->getFirstName();
+$lastName = $userNode->getLastName();
+
+
+
+$user = new User($firstName, $lastName);
+$user->create();
+
+var_dump($user);
+
+
+
+
+
+
+
+

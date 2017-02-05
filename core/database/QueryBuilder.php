@@ -5,6 +5,7 @@ Class QueryBuilder
 
     protected $pdo;
 
+
     public function __construct($pdo)
     {
         $this->pdo = $pdo;
@@ -19,12 +20,28 @@ Class QueryBuilder
         return $statement->fetchAll(PDO::FETCH_CLASS);
     }
 
-//    public function selectMaxId($table)
-//    {
-//        $statement = $this->pdo->prepare("SELECT max(id) from {$table}");
-//
-//        $statement->execute();
-//
-//        return $statement->fetch(PDO::FETCH_CLASS);
-//    }
+
+    public function insert($table, $parameters)
+    {
+
+        $sql = sprintf(
+            'insert into %s (%s) values (%s)',
+            $table,
+            implode(', ', array_keys($parameters)),
+
+            ':' . implode(', :', array_keys($parameters))
+
+        );
+
+
+        try{
+            $statement = $this->pdo->prepare($sql);
+
+            $statement->execute($parameters);
+        }catch (Exception $e){
+            die('Whoops, something went wrong.');
+        }
+
+    }
 }
+

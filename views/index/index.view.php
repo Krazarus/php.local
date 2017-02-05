@@ -1,6 +1,26 @@
 <?php require('views/partials/header.php'); ?>
 
+
+
 <div class="container">
+    <div class="row">
+
+
+        <h1>Submit your name</h1>
+
+        <form method="POST" action="/names">
+            <input name="name">
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+
+
+
+        <?php foreach ($users as $user) : ?>
+
+            <li><?= $user->name; ?></li>
+
+        <?php endforeach; ?>
+    </div>
 
     <div class="row">
         <div class="col-xs-12">
