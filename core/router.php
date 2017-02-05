@@ -33,7 +33,7 @@ class Router
         $parts = explode("?", $uri);
         $uri = $parts[0];
 
-        if (array_key_exists($uri, $this->routes[$requestType])) {
+        if (array_key_exists($uri, $this->routes[$requestType])){
             return $this->routes[$requestType][$uri];
         }
 
