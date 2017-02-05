@@ -15,20 +15,19 @@ $fb = new Facebook\Facebook([
 $helper = $fb->getRedirectLoginHelper();
 try {
     $accessToken = $helper->getAccessToken();
-} catch(Facebook\Exceptions\FacebookResponseException $e) {
+} catch (Facebook\Exceptions\FacebookResponseException $e) {
     // When Graph returns an error
     echo 'Graph returned an error: ' . $e->getMessage();
     exit;
-} catch(Facebook\Exceptions\FacebookSDKException $e) {
+} catch (Facebook\Exceptions\FacebookSDKException $e) {
     // When validation fails or other local issues
     echo 'Facebook SDK returned an error: ' . $e->getMessage();
     exit;
 }
 
-
 if (isset($accessToken)) {
     // Logged in!
-    $_SESSION['facebook_access_token'] = (string) $accessToken;
+    $_SESSION['facebook_access_token'] = (string)$accessToken;
 
     //OAuth 2.0
     $oAuth2Client = $fb->getOAuth2Client();
@@ -44,32 +43,38 @@ if (isset($accessToken)) {
     // access token from $_SESSION['facebook_access_token']
 }
 
-try{
+try {
     $response = $fb->get('/me?fields=id,first_name,last_name');
 //    $requestUserName = $fb->request('GET', '/me?fields=id,name');
     $userNode = $response->getGraphUser();
 //    $userNode = $requestUserName->getGraphUser();
-} catch (Facebook\Exceptions\FacebookResponseException $e){
+} catch (Facebook\Exceptions\FacebookResponseException $e) {
     echo 'Graph returned an error:' . $e->getMessage();
     unset($_SESSION['facebook_access_token']);
     exit;
-} catch(Facebook\Exceptions\FacebookSDKException $e){
+} catch (Facebook\Exceptions\FacebookSDKException $e) {
     echo 'Facebook SDK returned an error:' . $e->getMessage();
     exit;
 }
-echo 'Id ' . $userNode->getId() .'<br>';
+echo 'Id ' . $userNode->getId() . '<br>';
 echo 'First name ' . $userNode->getFirstName() . '<br>';
 echo 'Last name ' . $userNode->getLastName() . '<br>';
 
-$firstName = $userNode->getFirstName();
-$lastName = $userNode->getLastName();
+$first_name = $userNode->getFirstName();
+$last_name = $userNode->getLastName();
+
+if( $_SESSION['facebook_access_token'] ) {
+    $user = new User($first_name, $last_name);
+    $newUserID = $user->create();
+    $user->userID = $newUserID;
+    $_SESSION['userDetails'] = $user;
+
+}
+
+header('Location: /');
 
 
 
-$user = new User($firstName, $lastName);
-$user->create();
-
-var_dump($user);
 
 
 

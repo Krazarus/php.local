@@ -1,8 +1,8 @@
 <?php require('views/partials/header.php'); ?>
 
 
-
 <div class="container">
+
     <div class="row">
 
 
@@ -15,11 +15,11 @@
 
 
 
-        <?php foreach ($users as $user) : ?>
 
-            <li><?= $user->name; ?></li>
+            <li></li>
 
-        <?php endforeach; ?>
+
+
     </div>
 
     <div class="row">
@@ -36,17 +36,24 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <div class="form-group">
-                <textarea class="form-control" rows="3"></textarea>
-            </div>
-            <button type="submit" class="btn btn-info ">Reply</button>
-            <button type="submit" class="btn btn-default">Cancel</button>
-            <hr>
+            <form method="POST" action="/comment">
+                <div class="form-group">
+                    <textarea class="form-control" rows="3" name="text"></textarea>
+                </div>
+                <input type="hidden" name="parent_id" value="0">
+                <input type="hidden" name="level" value="1">
+
+                <button type="submit" class="btn btn-info ">Reply</button>
+                <button type="submit" class="btn btn-default">Cancel</button>
+                <hr>
+            </form>
         </div>
     </div>
-
+    <?php foreach ($comments as $comment) : ?>
 
     <?php require('views/index/_partials/comment.view.php'); ?>
+
+    <?php endforeach; ?>
 
     <div class="row">
         <div class="col-xs-12 ">
@@ -55,6 +62,7 @@
     </div>
     <br>
     <br>
+
 </div>
 
 

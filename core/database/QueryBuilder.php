@@ -38,10 +38,19 @@ Class QueryBuilder
             $statement = $this->pdo->prepare($sql);
 
             $statement->execute($parameters);
-        }catch (Exception $e){
+        }catch (Exception $e) {
             die('Whoops, something went wrong.');
         }
+        return $this->pdo->lastInsertId();
+    }
 
+    public function selectFirstLevelComments($table)
+    {
+        $statement = $this->pdo->prepare("select * from {$table} where parent_id = 0");
+
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_CLASS);
     }
 }
 

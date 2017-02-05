@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-
+use App;
 class User
 {
-    private $first_name;
-    private $last_name;
+    public $first_name;
+    public $last_name;
     private $table = 'users';
 
     public function __construct($first_name, $last_name)
@@ -35,10 +35,14 @@ class User
 
     public function create()
     {
+        $newUserID = App::get('database')->insert('users', [
+            'first_name' => $this->first_name,
+            'last_name' => $this->last_name
+        ]);
 
-//        $app['database']->insert($this->table, [
-//            'name' => $this->getFirstName(),
-//        ]);
+        return $newUserID;
+
+//        die(var_dump(getFirstName()));
 //        $user = QueryBuilder::insert($this->table, [
 //            'first_name' => $this->getFirstName(),
 //            'last_name' => $this->getLastName(),
