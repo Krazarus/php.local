@@ -1,4 +1,4 @@
-<?php require('views/partials/header.php'); ?>
+<?php require('app/views/partials/header.php'); ?>
 
 
 <div class="container">
@@ -32,7 +32,7 @@
     </div>
 
 
-    <?php require('views/index/_partials/comment.view.php'); ?>
+    <?php require('app/views/index/_partials/comment.view.php'); ?>
 
 
 
@@ -47,4 +47,4 @@
 </div>
 
 
-<?php require('views/partials/footer.php'); ?>
+<?php require('app/views/partials/footer.php'); ?>

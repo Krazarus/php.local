@@ -1,11 +1,14 @@
 <?php
 
+namespace App\Controllers;
+
 use App\Models\Comment;
 
 Class PagesController
 {
     public function home()
     {
+
         $comments = Comment::getTree();
         return view('index', [
             'comments' => $comments
@@ -29,11 +32,11 @@ Class PagesController
 
     public function login()
     {
-        require 'controllers/Auth/login.php';
+        require 'app/Controllers/Auth/login.php';
     }
 
     public function loginCallback()
     {
-        require 'controllers/Auth/login-callback.php';
+        require 'app/Controllers/Auth/login-callback.php';
     }
 }
