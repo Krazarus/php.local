@@ -4,25 +4,6 @@
 <div class="container">
 
     <div class="row">
-
-
-        <h1>Submit your name</h1>
-
-        <form method="POST" action="/names">
-            <input name="name">
-            <button type="submit" class="btn btn-default">Submit</button>
-        </form>
-
-
-
-
-            <li></li>
-
-
-
-    </div>
-
-    <div class="row">
         <div class="col-xs-12">
             <h2>Lorem ipsum dolor sit amet.</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem corporis dicta dignissimos dolore dolores
@@ -49,11 +30,11 @@
             </form>
         </div>
     </div>
-    <?php foreach ($comments as $comment) : ?>
+
 
     <?php require('views/index/_partials/comment.view.php'); ?>
 
-    <?php endforeach; ?>
+
 
     <div class="row">
         <div class="col-xs-12 ">
