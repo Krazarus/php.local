@@ -1,12 +1,39 @@
 <?php
 
-Class PageController
+use App\Models\Comment;
+
+Class PagesController
 {
     public function home()
     {
-        die('home');
-        $users = App::get('database')->selectAll('users');
+        $comments = Comment::getTree();
+        return view('index', [
+            'comments' => $comments
+        ]);
+    }
 
-        require 'views/index/index.view.php';
+    public function store()
+    {
+        if (!session_id()) {
+            session_start();
+        }
+
+        $comment = Comment::create([
+            'user_id' => $_SESSION['userDetails']->userID,
+            'text' => $_POST['text'],
+            'parent_id' => $_POST['parent_id'],
+        ]);
+
+        header('Location: /');
+    }
+
+    public function login()
+    {
+        require 'controllers/Auth/login.php';
+    }
+
+    public function loginCallback()
+    {
+        require 'controllers/Auth/login-callback.php';
     }
 }
