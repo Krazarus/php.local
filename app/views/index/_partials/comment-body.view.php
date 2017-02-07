@@ -6,20 +6,6 @@
         </h4>
         <p><?= $comment->text; ?></p>
     </div>
-<!--    <div class="col-xs-1">-->
-<!--        <div class="btn-group pull-right">-->
-<!--            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"-->
-<!--                    aria-haspopup="true"-->
-<!--                    aria-expanded="false"><span class="glyphicon glyphicon-option-vertical"-->
-<!--                                                aria-hidden="true"></span>-->
-<!--                <span class="caret"></span>-->
-<!--            </button>-->
-<!--            <ul class="dropdown-menu">-->
-<!--                <li><a href="#">Edit</a></li>-->
-<!--                <li><a href="#">Delete</a></li>-->
-<!--            </ul>-->
-<!--        </div>-->
-<!--    </div>-->
 </div>
 
 
