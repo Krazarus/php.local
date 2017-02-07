@@ -9,7 +9,6 @@ Class PagesController
 {
     public function home()
     {
-//
 
         $comments = Comment::getTree();
 

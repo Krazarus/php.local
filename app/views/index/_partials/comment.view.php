@@ -1,10 +1,10 @@
+
 <?php function doOutputList($comments)
 { ?>
-
     <?php foreach ($comments as $comment) { ?>
     <div class="media">
         <?php if (isset($comment->childs)): ?>
-            <div class="media-left" style="width:145px">
+            <div class="media-left" style="width:245px">
 
             </div>
             <div class="media-body">
@@ -12,7 +12,7 @@
                 <?php doOutputList($comment->childs) ?>
             </div>
         <?php else: ?>
-            <div class="media-left"  style="width:145px">
+            <div class="media-left" style="width:245px">
 
             </div>
             <div class="media-body">

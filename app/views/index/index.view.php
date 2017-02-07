@@ -24,8 +24,7 @@
                 <input type="hidden" name="parent_id" value="0">
                 <input type="hidden" name="level" value="1">
 
-                <button type="submit" class="btn btn-info ">Reply</button>
-                <button type="submit" class="btn btn-default">Cancel</button>
+                <button type="submit" class="btn btn-info "<?php if(empty($_SESSION)){ ?> disabled <?php   } ?>>Reply</button>
                 <hr>
             </form>
         </div>
@@ -36,11 +35,6 @@
 
 
 
-    <div class="row">
-        <div class="col-xs-12 ">
-            <button type="button" class="btn btn-default  btn-block">Show more</button>
-        </div>
-    </div>
     <br>
     <br>
 

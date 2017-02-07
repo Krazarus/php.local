@@ -33,7 +33,6 @@ Class QueryBuilder
 
         );
 
-
         try{
             $statement = $this->pdo->prepare($sql);
 
@@ -41,6 +40,7 @@ Class QueryBuilder
         }catch (Exception $e) {
             die('Whoops, something went wrong.');
         }
+
         return $this->pdo->lastInsertId();
     }
 }

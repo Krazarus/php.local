@@ -58,6 +58,10 @@ try {
 $first_name = $userNode->getFirstName();
 $last_name = $userNode->getLastName();
 
+
+
+
+
 if( $_SESSION['facebook_access_token'] ) {
     $user = new User($first_name, $last_name);
     $newUserID = $user->create();
