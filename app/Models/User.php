@@ -3,6 +3,9 @@
 namespace App\Models;
 
 use App;
+use Connection;
+use PDO;
+
 class User
 {
     public $first_name;
@@ -41,18 +44,6 @@ class User
         ]);
 
         return $newUserID;
-
-//        die(var_dump(getFirstName()));
-//        $user = QueryBuilder::insert($this->table, [
-//            'first_name' => $this->getFirstName(),
-//            'last_name' => $this->getLastName(),
-//        ]);
-//
-//        return $user;
-    }
-
-    public function update()
-    {
 
     }
 }

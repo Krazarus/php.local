@@ -3,16 +3,27 @@
 namespace App\Controllers;
 
 use App\Models\Comment;
-
+use App\Services;
+use App\Models\User;
 Class PagesController
 {
     public function home()
     {
+//        if (!session_id()) {
+//            session_start();
+//        }
+//        $array = $_SESSION['userDetails'];
+//        echo '<pre>';
+//        print_r($array);
+//        echo '</pre>';
+//        die();
 
         $comments = Comment::getTree();
+
         return view('index', [
             'comments' => $comments
         ]);
+
     }
 
     public function store()

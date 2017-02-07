@@ -5,6 +5,8 @@ use App\Models\User;
 if (!session_id()) {
     session_start();
 }
+
+
 $fb = new Facebook\Facebook([
     'app_id' => '707826892725027', // Replace {app-id} with your app id
     'app_secret' => '07cc6964c692ad4663867d54f96a0c36',
@@ -37,10 +39,6 @@ if (isset($accessToken)) {
     $fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
 
 
-//    var_dump($_SESSION['facebook_access_token']);
-
-    // Now you can redirect to another page and use the
-    // access token from $_SESSION['facebook_access_token']
 }
 
 try {
@@ -56,9 +54,6 @@ try {
     echo 'Facebook SDK returned an error:' . $e->getMessage();
     exit;
 }
-echo 'Id ' . $userNode->getId() . '<br>';
-echo 'First name ' . $userNode->getFirstName() . '<br>';
-echo 'Last name ' . $userNode->getLastName() . '<br>';
 
 $first_name = $userNode->getFirstName();
 $last_name = $userNode->getLastName();
