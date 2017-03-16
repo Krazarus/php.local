@@ -5,7 +5,9 @@ class Router
 
     public $routes = [
         'GET' => [],
-        'POST' => []
+        'POST' => [],
+        'PATCH' => [],
+        'DELETE' => []
     ];
 
 

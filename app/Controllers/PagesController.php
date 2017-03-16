@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Comment;
+use App\Models\Phone;
 use App\Services;
 use App\Models\User;
 Class PagesController
@@ -42,4 +43,19 @@ Class PagesController
     {
         require 'app/Controllers/Auth/login-callback.php';
     }
+
+    public function logout()
+    {
+        require 'app/Controllers/Auth/logout.php';
+    }
+
+    public function phone()
+    {
+        $phones = Phone::getTable();
+        return view('phone', [
+            'phones' => $phones
+        ]);
+
+    }
+
 }

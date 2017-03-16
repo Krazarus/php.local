@@ -43,5 +43,18 @@ Class QueryBuilder
 
         return $this->pdo->lastInsertId();
     }
+
+    public function update($table, $set , $id)
+    {
+        $sql = "UPDATE {$table} SET {$set} WHERE id = {$id}";
+        try{
+            $statement = $this->pdo->prepare($sql);
+        }catch (Exception $e) {
+            die('Whoops, something went wrong.');
+        }
+    }
 }
+
+
+
 

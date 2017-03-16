@@ -12,6 +12,9 @@ ini_set('error_reporting', 0);
 ini_set('display_errors', 0);
 $array = (array)$_SESSION['userDetails'];
 
+
+//session_unset();
+//var_dump($_SESSION);
 ?>
 
 
@@ -42,18 +45,30 @@ $array = (array)$_SESSION['userDetails'];
 
                 <?php
                 if (empty($_SESSION['userDetails'])) {
-                    echo "<li><a href=\"/login\">Sign In</a></li>";
-                    echo"<li><div class=\"alert alert-info alert-dismissible\" role=\"alert\">
+                    echo "<li><a href=\"/login\">Sign In with Facebook</a></li>";
+                    echo "<li><div class=\"alert alert-info alert-dismissible\" role=\"alert\">
                                 <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
                                 <span aria-hidden=\"true\">&times;</span></button>
                                 <strong>Warning! </strong>You are not logged in. You can't leave comments.
                             </div>
                           </li>";
                 } else {
-                    echo '<li><a href="#">' . $array['first_name'] . ' ' . $array['last_name'] . '</a></li>';
+                    echo '<li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
+                            aria-haspopup="true" aria-expanded="false">
+                            ' . $array['first_name'] . ' ' . $array['last_name'] . ' <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="/logout">logout</a></li>
+                            </ul>
+                        </li>';
                 } ?>
 
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
+
+
+

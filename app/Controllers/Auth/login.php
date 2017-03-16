@@ -1,8 +1,5 @@
 <?php
 
-//namespace App\Facebook;
-
-
 if (!session_id()) {
     session_start();
 }

@@ -2,11 +2,7 @@
 
 namespace App\Models;
 
-use App;
-use Connection;
-use PDO;
-
-class User
+class Person
 {
     public $first_name;
     public $last_name;
@@ -34,16 +30,5 @@ class User
     public function getLastName()
     {
         return $this->last_name;
-    }
-
-    public function create()
-    {
-        $newUserID = App::get('database')->insert('users', [
-            'first_name' => $this->first_name,
-            'last_name' => $this->last_name
-        ]);
-
-        return $newUserID;
-
     }
 }
